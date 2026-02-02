@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog design resources - Srijith Reddy Pakala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif; line-height: 1.6; color: #1d1d1f; background: #fff; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+        nav ul { display: flex; justify-content: center; list-style: none; padding: 1rem 0; max-width: 980px; margin: 0 auto; }
+        nav a { text-decoration: none; color: #1d1d1f; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #0066cc; }
+        .container { max-width: 980px; margin: 0 auto; padding: 120px 20px 50px; min-height: 100vh; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #0066cc; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 2rem; transition: transform 0.3s; }
+        .back-link:hover { transform: translateX(-4px); }
+        .blog-icon-large { width: 80px; height: 80px; background: linear-gradient(135deg, #0066cc, #0099ff); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; margin-bottom: 1.5rem; }
+        .blog-title { font-size: 56px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.1; }
+        .blog-meta { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .meta-tag { background: #f5f5f7; padding: 8px 16px; border-radius: 16px; font-size: 13px; color: #6e6e73; font-weight: 500; }
+        .blog-content { font-size: 17px; line-height: 1.8; color: #1d1d1f; }
+        .blog-content h1 { font-size: 36px; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .blog-content h2 { font-size: 28px; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .blog-content h3 { font-size: 24px; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .blog-content p { margin-bottom: 1.5rem; }
+        .blog-content code { background: rgba(0, 0, 0, 0.05); padding: 3px 8px; border-radius: 6px; font-family: 'SF Mono', Monaco, monospace; font-size: 14px; }
+        .blog-content pre { background: #1d1d1f; color: #f5f5f7; padding: 1.5rem; border-radius: 12px; overflow-x: auto; margin: 1.5rem 0; }
+        .blog-content pre code { background: none; padding: 0; color: #f5f5f7; }
+        .blog-content ul, .blog-content ol { margin-left: 2rem; margin-bottom: 1.5rem; }
+        .blog-content li { margin-bottom: 0.8rem; }
+        .blog-content a { color: #0066cc; text-decoration: none; }
+        .blog-content a:hover { text-decoration: underline; }
+        .blog-content blockquote { border-left: 4px solid #0066cc; padding-left: 1.5rem; margin: 1.5rem 0; color: #6e6e73; font-style: italic; }
+        @media (max-width: 768px) {
+            .blog-title { font-size: 40px; }
+            nav a { padding: 0.5rem 0.8rem; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <a href="blogs.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blogs</a>
+
+        <div class="blog-icon-large"><i class="fas fa-file-alt"></i></div>
+        <h1 class="blog-title">How I’d Learn Analog IC Design Today: The Best Resources</h1>
+        
+        <div class="blog-meta">
+            <span class="meta-tag"><i class="far fa-calendar"></i> February 2, 2026</span>
+        </div>
+
+        <div class="blog-content">
+            <h1>A Note</h1>
+
+            <p>Before you go through, I should tell you i am still very early in my career, so take this advice with a pinch of salt.<br>
+                Finding the right resources is one of the biggest problem i faced while learning analog design and its very important to use quality resources as bad resources can waste your time and mess up your intution. The resources below cover fundamentals to system level application specific designs. </p>
+
+            <h2>Fundamentals</h2>
+
+            <p>To explore fundamentals of analog design, you need have a strong foundation in circuit analysis such as KCL, KVL, thevenin equivalent, norton equivalent, bode plots.</p>
+
+            <ul>
+                <li><strong> </strong>Understanding how to find the poles and zeros of any circuit is very critical and necessary to get good at analog design. ZVTC method is widely used for this, Prof. Ali Hajmiri has a very good paper[<a href="https://ieeexplore.ieee.org/document/5340556">1</a>] and video on youtube (<a href="https://www.youtube.com/watch?v=I9A9BeGJsEM&list=PLc7Gz02Znph_JYVaX_eFLwZxETVa_CkuI">link</a>) for this.</li>
+                <li><strong></strong>As for the building blocks of analog circuits CS, CG, CD Amplifiers, Prof. Razavi's "Design of Analog CMOS Integrated Circuits" is a good suggestion. Another good book that takes less time to go through is "Analysis and Design of Elementary MOS Amplifier Stages" by Prof. Boris Murmann
+ </li>
+                <li>There are also some excellent magazines that cover many fundamental topics as well as more specific circuits that are worth going through when you need to revise for an interview:
+                    <ul>
+                        <br>
+                        <li><a href="https://www.eecg.utoronto.ca/~ali/intuitions.html">Circuit Insights</a>  by Prof. Ali Sheikholeslami</li>
+                        <li><a href="https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=The%20Analog%20Mind&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&refinements=Author:Behzad%20Razavi">The Analog Mind</a>  by Prof. Behzad Razavi</li>
+                        <li><a href="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=A%20Circuit%20for%20All%20Seasons">A Circuit for All Seasons</a>  by Prof. Behzad Razavi</li>
+                        <li><a href='https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=What%20you%20didn’t%20Learn%20in%20School&highlight=true&returnFacets=ALL&returnType=SEARCH&matchPubs=true&refinements=Author:Chris%20Mangelsdorf'>Shop Talk: What You Didn’t Learn in School</a>  by Prof. Chris Mangelsdorf</li>
+                </ul>
+                </li>
+            </ul>
+
+            <h2>System-level</h2>
+
+            <p>The chip design industry is very big and it takes a life time to go through all the papers, books, videos on just data converters. A goldmine to understand tradeoffs, prior research and future directions of areas such as data converters, frequency synthesizers, wireless communication chips, wireline communication, biomedical chips, power management, memory design, RF Design is to listen to best people in the academia & industry. SSCS has many videos, short courses, tutorials exactly for this.</p>
+
+            <ul>
+                <li> ISSCC has been organizing circuit insights <a href='https://www.isscc.org/insights'> session</a>  for the past few years that cover some great range of topics from intution to ASIC designs </li>
+                <li> SSCS has regural <a href='https://resourcecenter.sscs.ieee.org/education/webinars'> webinars</a> with experts from each field every month. some of these popular webinars are available on youtube <a href = 'https://www.youtube.com/@IEEESolidStateCircuitsSociety/playlists'> playlists</a> organized by each field, but not all webinars are uploaded here, you can find a complete set of webinars by joining the SSCS community </li>
+                <li> You can also join these webinars by registering for free on the <a href='https://sscs.ieee.org/events/'> site</a> </li>
+                <li> Here is a collection of short tutorials PPTs from ISSCC at this <a href='https://monkeywithbrain.in/en/educational/issccedu'>site</a> </li>
+            </ul>
+            <h2>Competitions to tapeouts</h2>
+            <p>A tapeout early in career can be a big boost, but its very hard to find an opportunity to tapeout. One way is to join a research lab but this still is no gaurantee. Another sure way is to intern during summer. Below are some of the ways to tapeout/explore the process of design. </p>
+            <ul>
+                <li> Access to cadence and proprietary software is very important to truly explore analog design that can be taped-out. A good alternative to this is to use open-source tools like Xschem, ngspice, etc.(<a href='https://github.com/iic-jku/IIC-OSIC-TOOLS'>link</a>) </li>
+                <li> Prof. Harald Pretl has a <a href='https://iic-jku.github.io/analog-circuit-design/'>course</a> on how to use the tools through some great example designs using Gm/Id methodology </li>
+                <li> Gm/Id is an excellent design methodology for short channel technology nodes where traditional equations don't work, Prof. Boris murmann has a book "Systematic Design of Analog CMOS Circuits" on this as well as some short <a href='https://ieeetoronto.ca/wp-content/uploads/2020/06/20160226toronto_sscs.pdf'>slides</a></li>
+                <li> Zero to ASIC <a href='https://www.zerotoasiccourse.com/analog/'>website</a> sometimes lets you tapeout your own design if it has merit.</li>
+                <li> SSCS has been hosting <a href='https://sscs.ieee.org/technical-committees/tc-ose/sscs-pico-program/'>Chipathon</a> for the past four years where you can tapeout a design for a given theme. I have tried this last year, but couldn't spend enough time for personal reasons, although some people were able to tapeout.</li>
+                <li> You can also showcase your design talent through code-a-chip <a href='https://sscs.ieee.org/membership/awards/ieee-sscs-code-a-chip-travel-grant-awards/'>program</a> </li>
+                <li> SSCS has a student circuit design <a href='https://sscs.ieee.org/education/sscs-student-circuit-contest/'>contest</a> which has attractive rewards like travel grants for conferences. </li>
+               
+            </ul>
+
+            <h2>Let's Connect!</h2>
+
+            <p>Feel free to reach out if you want to discuss IC design, have questions about my work, or just want to connect. You can find my contact information on the <a href="index.html">home page</a>.</p>
+
+            <p>Stay tuned for more technical content, project updates, and reflections on the exciting world of analog and mixed-signal IC design!</p>
+        </div>
+    </div>
+</body>
+</html>
