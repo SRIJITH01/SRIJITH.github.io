@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Noise Amplifier Design - Srijith Reddy Pakala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #fff;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1d1d1f;
+            padding: 0.5rem 1.5rem;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0066cc;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 120px 20px 50px;
+            min-height: 100vh;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-4px);
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+        }
+
+        .project-icon-large {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0066cc, #0099ff);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: #f5f5f7;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 13px;
+            color: #0066cc;
+            font-weight: 500;
+        }
+
+        .project-summary {
+            font-size: 20px;
+            color: #6e6e73;
+            line-height: 1.7;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .spec-card {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .spec-label {
+            font-size: 14px;
+            color: #6e6e73;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0066cc;
+        }
+
+        .content-section {
+            margin: 3rem 0;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.015em;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #1d1d1f;
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: #f5f5f7;
+            border-left: 4px solid #0066cc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: #0066cc;
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav a {
+                padding: 0.5rem 0.8rem;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <a href="projects.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to projects
+        </a>
+
+        <div class="project-header">
+            <div class="project-icon-large">
+                <i class="fas fa-signal"></i>
+            </div>
+            <h1 class="project-title">Low Noise Amplifier Design</h1>
+            <div class="project-tags">
+                <span class="tag">RFIC Design</span>
+                <span class="tag">LNA Architecture</span>
+                <span class="tag">2.5 GHz</span>
+                <span class="tag">Wireless Communications</span>
+            </div>
+            <p class="project-summary">
+                Designed a Common Source Low Noise Amplifier leveraging inductive degeneration for enhanced input 
+                impedance matching, minimized noise figure, and improved linearity at 2.5 GHz for wireless receiver applications.
+            </p>
+        </div>
+
+        <div class="specs-grid">
+            <div class="spec-card">
+                <div class="spec-label">Operating Frequency</div>
+                <div class="spec-value">2.5 GHz</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-label">Architecture</div>
+                <div class="spec-value">CS LNA</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-label">Key Technique</div>
+                <div class="spec-value">Inductive<br>Degn.</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-label">Application</div>
+                <div class="spec-value">Wireless<br>RX</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                The Low Noise Amplifier (LNA) is the first active component in a wireless receiver chain, and its 
+                performance critically impacts the overall system sensitivity. This project focused on designing a 
+                high-performance LNA for 2.5 GHz applications, commonly used in WiFi (802.11) and other wireless 
+                communication standards.
+            </p>
+            <p>
+                The LNA must simultaneously achieve low noise figure, sufficient gain, good input matching, high 
+                linearity, and low power consumption—often conflicting requirements that demand careful optimization 
+                and trade-off analysis.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Design Methodology</h2>
+            
+            <h3>Architecture Selection: Common Source with Inductive Degeneration</h3>
+            <p>
+                The common source (CS) topology with inductive source degeneration was selected as it offers several advantages:
+            </p>
+            <ul>
+                <li><strong>Simultaneous noise and power matching:</strong> The source inductor allows independent optimization 
+                    of input impedance matching and noise figure</li>
+                <li><strong>Low noise contribution:</strong> Inductors are passive and contribute minimal noise compared to resistive degeneration</li>
+                <li><strong>Improved linearity:</strong> Source degeneration provides negative feedback, enhancing IIP3</li>
+                <li><strong>Compact layout:</strong> Simpler than cascode structures while maintaining good performance</li>
+            </ul>
+
+            <h3>Input Matching Network Design</h3>
+            <p>
+                The input impedance of the LNA is given by:
+            </p>
+            <p style="text-align: center; font-family: 'Times New Roman', serif; font-size: 18px; margin: 1.5rem 0;">
+                Z<sub>in</sub> = sL<sub>g</sub> + sL<sub>s</sub> + 1/(sC<sub>gs</sub>) + g<sub>m</sub>L<sub>s</sub>/C<sub>gs</sub>
+            </p>
+            <p>
+                Key design considerations included:
+            </p>
+            <ul>
+                <li>Selecting gate inductor (L<sub>g</sub>) to resonate with C<sub>gs</sub> at 2.5 GHz</li>
+                <li>Choosing source inductor (L<sub>s</sub>) to provide real part matching to 50Ω</li>
+                <li>Optimizing transistor width for target g<sub>m</sub> and C<sub>gs</sub> values</li>
+                <li>Minimizing parasitic capacitances through careful layout</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Noise Figure Optimization</h3>
+                <p>
+                    The noise figure of an LNA with inductive degeneration is dominated by the channel thermal noise 
+                    of the input transistor. By choosing appropriate bias current and transistor sizing, and using 
+                    inductive (rather than resistive) degeneration, the noise figure can be minimized while maintaining 
+                    input matching. The quality factor (Q) of on-chip spiral inductors also plays a critical role.
+                </p>
+            </div>
+
+            <h3>Load Network and Gain Optimization</h3>
+            <p>
+                The output load network was designed to:
+            </p>
+            <ul>
+                <li>Maximize voltage gain through LC resonant tank at 2.5 GHz</li>
+                <li>Provide appropriate output impedance for the following mixer stage</li>
+                <li>Minimize loss from parasitic resistances in inductors</li>
+                <li>Allow easy integration with differential mixer inputs</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Key Design Challenges</h2>
+            
+            <h3>1. Inductor Design and Layout</h3>
+            <p>
+                On-chip spiral inductors are critical components but suffer from:
+            </p>
+            <ul>
+                <li>Low quality factor (Q) due to substrate losses and metal resistance</li>
+                <li>Significant parasitic capacitance to substrate</li>
+                <li>Self-resonance frequency limitations</li>
+            </ul>
+            <p>
+                Solutions implemented:
+            </p>
+            <ul>
+                <li>Used top-level thick metal layers to minimize series resistance</li>
+                <li>Implemented patterned ground shield to reduce substrate coupling</li>
+                <li>Optimized inductor geometry (inner diameter, width, spacing) for maximum Q</li>
+                <li>Validated inductor models using EM simulation</li>
+            </ul>
+
+            <h3>2. Stability Analysis</h3>
+            <p>
+                RF amplifiers can be prone to oscillations. Stability was ensured by:
+            </p>
+            <ul>
+                <li>Analyzing S-parameters across frequency to verify K-factor > 1</li>
+                <li>Adding source/load stabilization networks if needed</li>
+                <li>Careful PCB/bondwire modeling to account for package parasitics</li>
+                <li>Ensuring unconditional stability from DC to beyond operating frequency</li>
+            </ul>
+
+            <h3>3. Linearity vs. Power Trade-off</h3>
+            <p>
+                Higher bias current improves linearity (IIP3) but increases power consumption. The design balanced:
+            </p>
+            <ul>
+                <li>Selecting bias point for optimal g<sub>m</sub>/I<sub>D</sub> efficiency</li>
+                <li>Using inductive degeneration to enhance linearity without excessive current</li>
+                <li>Meeting IIP3 specifications for typical wireless blocking scenarios</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Simulation Results</h2>
+            <p>
+                The LNA design was extensively simulated in Cadence Spectre with the following performance metrics achieved:
+            </p>
+            <ul>
+                <li><strong>Noise Figure:</strong> Optimized to be less than 2.5 dB at 2.5 GHz</li>
+                <li><strong>Voltage Gain (S21):</strong> Achieved 15-18 dB across the band of interest</li>
+                <li><strong>Input Return Loss (S11):</strong> Better than -15 dB, indicating good 50Ω matching</li>
+                <li><strong>Reverse Isolation (S12):</strong> Better than -40 dB, ensuring minimal feedback</li>
+                <li><strong>IIP3:</strong> Exceeding -10 dBm for acceptable linearity</li>
+                <li><strong>Power Consumption:</strong> Less than 15 mW from 1.8V supply</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Performance Highlights</h3>
+                <p>
+                    The design successfully demonstrated the classic LNA trade-offs: achieving low noise figure while 
+                    maintaining good input matching, adequate gain, and reasonable power consumption. The inductive 
+                    degeneration technique proved highly effective in decoupling noise and impedance matching constraints.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Technical Skills Demonstrated</h2>
+            <ul>
+                <li>RF/microwave circuit design principles and Smith chart analysis</li>
+                <li>S-parameter characterization and interpretation</li>
+                <li>Noise figure analysis and optimization techniques</li>
+                <li>On-chip inductor design and electromagnetic simulation</li>
+                <li>Stability analysis using Rollet's criteria and stability circles</li>
+                <li>Understanding of wireless receiver architectures and specifications</li>
+                <li>Cadence Virtuoso and Spectre RF simulation</li>
+                <li>Layout considerations for high-frequency circuits</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>Lessons Learned and Future Work</h2>
+            <p>
+                Key insights from this project:
+            </p>
+            <ul>
+                <li>The critical importance of accurate inductor modeling at GHz frequencies</li>
+                <li>Trade-offs between NF, gain, linearity, and power are fundamental to LNA design</li>
+                <li>Layout parasitics can significantly impact performance and must be considered early</li>
+                <li>Source degeneration provides elegant solution to simultaneous matching and noise optimization</li>
+            </ul>
+            <p>
+                Potential enhancements for future iterations:
+            </p>
+            <ul>
+                <li>Implement cascode topology for improved reverse isolation and higher gain</li>
+                <li>Add multi-band capability through switchable/tunable resonators</li>
+                <li>Explore noise-canceling architectures for improved NF</li>
+                <li>Design for fabrication and measure actual silicon performance</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

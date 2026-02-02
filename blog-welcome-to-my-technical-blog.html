@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Technical Blog - Srijith Reddy Pakala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif; line-height: 1.6; color: #1d1d1f; background: #fff; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+        nav ul { display: flex; justify-content: center; list-style: none; padding: 1rem 0; max-width: 980px; margin: 0 auto; }
+        nav a { text-decoration: none; color: #1d1d1f; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #0066cc; }
+        .container { max-width: 980px; margin: 0 auto; padding: 120px 20px 50px; min-height: 100vh; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #0066cc; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 2rem; transition: transform 0.3s; }
+        .back-link:hover { transform: translateX(-4px); }
+        .blog-icon-large { width: 80px; height: 80px; background: linear-gradient(135deg, #0066cc, #0099ff); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; margin-bottom: 1.5rem; }
+        .blog-title { font-size: 56px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.1; }
+        .blog-meta { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .meta-tag { background: #f5f5f7; padding: 8px 16px; border-radius: 16px; font-size: 13px; color: #6e6e73; font-weight: 500; }
+        .blog-content { font-size: 17px; line-height: 1.8; color: #1d1d1f; }
+        .blog-content h1 { font-size: 36px; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .blog-content h2 { font-size: 28px; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; }
+        .blog-content h3 { font-size: 24px; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .blog-content p { margin-bottom: 1.5rem; }
+        .blog-content code { background: rgba(0, 0, 0, 0.05); padding: 3px 8px; border-radius: 6px; font-family: 'SF Mono', Monaco, monospace; font-size: 14px; }
+        .blog-content pre { background: #1d1d1f; color: #f5f5f7; padding: 1.5rem; border-radius: 12px; overflow-x: auto; margin: 1.5rem 0; }
+        .blog-content pre code { background: none; padding: 0; color: #f5f5f7; }
+        .blog-content ul, .blog-content ol { margin-left: 2rem; margin-bottom: 1.5rem; }
+        .blog-content li { margin-bottom: 0.8rem; }
+        .blog-content a { color: #0066cc; text-decoration: none; }
+        .blog-content a:hover { text-decoration: underline; }
+        .blog-content blockquote { border-left: 4px solid #0066cc; padding-left: 1.5rem; margin: 1.5rem 0; color: #6e6e73; font-style: italic; }
+        @media (max-width: 768px) {
+            .blog-title { font-size: 40px; }
+            nav a { padding: 0.5rem 0.8rem; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <a href="blogs.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blogs</a>
+
+        <div class="blog-icon-large"><i class="fas fa-file-alt"></i></div>
+        <h1 class="blog-title">Welcome to My Technical Blog</h1>
+        
+        <div class="blog-meta">
+            <span class="meta-tag"><i class="far fa-calendar"></i> February 1, 2026</span>
+        </div>
+
+        <div class="blog-content">
+            <h1>Starting My Journey at UC San Diego</h1>
+
+            <p>I'm excited to begin sharing my experiences and insights as I start my Master's program at UC San Diego, specializing in Electronic Circuits and Systems.</p>
+
+            <h2>My Background</h2>
+
+            <p>Coming from IIT Hyderabad with a strong foundation in analog and RF IC design, I've had the privilege of working on several exciting projects:</p>
+
+            <ul>
+                <li><strong>RFID tag design</strong> and successful tapeout in 180nm CMOS at WiLO Networks</li>
+                <li><strong>Advanced FinFET node design</strong> (&lt;5nm) at Intel Corporation</li>
+                <li><strong>Power management silicon characterization</strong> at Texas Instruments</li>
+            </ul>
+
+            <h2>What to Expect from This Blog</h2>
+
+            <p>I'll be sharing content on:</p>
+
+            <ol>
+                <li><strong>Deep dives into analog IC design techniques</strong> - from basic building blocks to advanced architectures</li>
+                <li><strong>Insights from coursework and research</strong> - what I'm learning at UCSD</li>
+                <li><strong>Industry experiences and lessons learned</strong> - practical tips from my internships and work experience</li>
+                <li><strong>Project updates</strong> - documenting my design journey and challenges</li>
+            </ol>
+
+           
+            <h2>Let's Connect!</h2>
+
+            <p>Feel free to reach out if you want to discuss IC design, have questions about my work, or just want to connect. You can find my contact information on the <a href="index.html">home page</a>.</p>
+
+            <p>Stay tuned for more technical content, project updates, and reflections on the exciting world of analog and mixed-signal IC design!</p>
+        </div>
+    </div>
+</body>
+</html>

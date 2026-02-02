@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srijith Reddy Pakala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #fff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1d1d1f;
+            padding: 0.5rem 1.5rem;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0066cc;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 120px 20px 50px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 4px solid #f5f5f7;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 28px;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .intro {
+            font-size: 20px;
+            color: #1d1d1f;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* Contact Links */
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #1d1d1f;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-4px);
+            color: #0066cc;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #f5f5f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: background 0.3s;
+        }
+
+        .contact-link:hover .contact-icon {
+            background: #e8e8ed;
+        }
+
+        .contact-icon i {
+            color: #0066cc;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-section {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .education-card {
+            background: transparent;
+            padding: 1.5rem 0;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .education-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .university-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .university-logo {
+            width: 80px;
+            height: 80px;
+            background: transparent;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .university-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+        }
+
+        .university-info {
+            flex: 1;
+        }
+
+        .university-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0066cc;
+            margin-bottom: 0.3rem;
+        }
+
+        .degree {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.3rem;
+        }
+
+        .duration {
+            font-size: 14px;
+            color: #6e6e73;
+        }
+
+        .education-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e5e7;
+        }
+
+        .detail-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .detail-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6e6e73;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-text {
+            font-size: 15px;
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .intro {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            nav a {
+                padding: 0.5rem 0.8rem;
+                font-size: 13px;
+            }
+
+            .contact-section {
+                gap: 1.5rem;
+            }
+
+            .university-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="profile-photo">
+                <img src="images/photo.jpeg" alt="Srijith Reddy Pakala">
+            </div>
+            <h1>Srijith Pakala</h1>
+            <p class="subtitle">Analog Design Engineer</p>
+            <p class="intro">
+                I am a graduate student at UC San Diego specializing in Analog/RF design with deep interest in ADC's and its applications in biosensors and IoT sensor networks. <br>I'm currently exploring mixed-signal architectures for neural stimulation and sensing systems.
+                This summer, i will be interning at Cirrus Logic-Austix, TX.
+            </p>
+        </div>
+
+        <!-- Contact Links -->
+        <div class="contact-section">
+            <a href="/cdn-cgi/l/email-protection#a1d2d3c8cbc8d5c9d3c4c5c5d8d1c0cac0cdc0919190e1c6ccc0c8cd8fc2cecc" class="contact-link">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <span class="contact-label">Email</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/srijith-reddy-pakala/" target="_blank" class="contact-link">
+                <div class="contact-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <span class="contact-label">LinkedIn</span>
+            </a>
+
+            <a href="https://github.com/SRIJITH01" target="_blank" class="contact-link">
+                <div class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <span class="contact-label">GitHub</span>
+            </a>
+
+        </div>
+
+        <!-- Education Section -->
+        <div class="education-section">
+            <h2 class="section-title">Education</h2>
+            
+            <!-- UC San Diego -->
+            <div class="education-card">
+                <div class="university-header">
+                    <div class="university-logo">
+                        <img src="images/UCSD.png" alt="UC San Diego">
+                    </div>
+                    <div class="university-info">
+                        <div class="university-name">UC San Diego</div>
+                        <div class="degree">Master of Science in Electrical and Computer Engineering</div>
+                        <div class="duration">Sep 2025 - Jun 2027</div>
+                    </div>
+                </div>
+                <div class="education-details">
+                    
+                    <div class="detail-item">
+                        <div class="detail-label">Coursework</div>
+                        <div class="detail-text">Analog Integrated Circuit Design, Microwave Systems and Circuits, Biomedical Integrated Circuits & Systems</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IIT Hyderabad -->
+            <div class="education-card">
+                <div class="university-header">
+                    <div class="university-logo">
+                        <img src="images/iith.jpg" alt="IIT Hyderabad">
+                    </div>
+                    <div class="university-info">
+                        <div class="university-name">IIT Hyderabad</div>
+                        <div class="degree">Bachelor of Technology in Electrical Engineering</div>
+                        <div class="duration">Jul 2019 - May 2023</div>
+                    </div>
+                </div>
+                <div class="education-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Coursework</div>
+                        <div class="detail-text">Analog Circuits, RFIC Design, Digital IC Design, Semiconductor Device Fundamentals, Microprocessor Architecture, Random Processes</div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe education section elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const sectionTitle = document.querySelector('.section-title');
+            const educationCards = document.querySelectorAll('.education-card');
+            
+            if (sectionTitle) observer.observe(sectionTitle);
+            educationCards.forEach(card => observer.observe(card));
+        });
+    </script>
+</body>
+</html>

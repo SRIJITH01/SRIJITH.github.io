@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D-CORDIC Implementation - Srijith Reddy Pakala</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif; line-height: 1.6; color: #1d1d1f; background: #fff; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+        nav ul { display: flex; justify-content: center; list-style: none; padding: 1rem 0; max-width: 980px; margin: 0 auto; }
+        nav a { text-decoration: none; color: #1d1d1f; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #0066cc; }
+        .container { max-width: 980px; margin: 0 auto; padding: 120px 20px 50px; min-height: 100vh; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #0066cc; text-decoration: none; font-size: 14px; font-weight: 500; margin-bottom: 2rem; transition: transform 0.3s; }
+        .back-link:hover { transform: translateX(-4px); }
+        .project-icon-large { width: 80px; height: 80px; background: linear-gradient(135deg, #0066cc, #0099ff); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; margin-bottom: 1.5rem; }
+        .project-title { font-size: 56px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.1; }
+        .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .tag { background: #f5f5f7; padding: 8px 16px; border-radius: 16px; font-size: 13px; color: #0066cc; font-weight: 500; }
+        .project-summary { font-size: 20px; color: #6e6e73; line-height: 1.7; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+        .spec-card { background: #f5f5f7; border-radius: 18px; padding: 1.5rem; text-align: center; }
+        .spec-label { font-size: 14px; color: #6e6e73; font-weight: 500; margin-bottom: 0.5rem; }
+        .spec-value { font-size: 28px; font-weight: 700; color: #0066cc; }
+        h2 { font-size: 36px; font-weight: 700; margin-bottom: 1.5rem; margin-top: 3rem; }
+        h3 { font-size: 24px; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        p { font-size: 17px; line-height: 1.8; margin-bottom: 1.5rem; }
+        ul { margin-left: 2rem; margin-bottom: 1.5rem; }
+        li { font-size: 17px; line-height: 1.8; margin-bottom: 0.8rem; }
+        .highlight-box { background: #f5f5f7; border-left: 4px solid #0066cc; border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+        .highlight-box h3 { margin-top: 0; color: #0066cc; }
+        .code-block { background: #1d1d1f; color: #f5f5f7; padding: 1.5rem; border-radius: 12px; font-family: 'SF Mono', Monaco, monospace; font-size: 14px; overflow-x: auto; margin: 1.5rem 0; }
+        @media (max-width: 768px) {
+            .project-title { font-size: 40px; }
+            h2 { font-size: 28px; }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            nav a { padding: 0.5rem 0.8rem; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <a href="projects.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to projects
+        </a>
+
+        <div class="project-header">
+            <div class="project-icon-large"><i class="fas fa-calculator"></i></div>
+            <h1 class="project-title">2D-CORDIC Digital Implementation</h1>
+            <div class="project-tags">
+                <span class="tag">Digital Design</span>
+                <span class="tag">Verilog HDL</span>
+                <span class="tag">RTL Design</span>
+                <span class="tag">Algorithm Implementation</span>
+            </div>
+            <p class="project-summary">
+                Implemented vector and rotation modes of the 2D CORDIC (COordinate Rotation DIgital Computer) algorithm 
+                in Verilog for hardware-efficient computation of trigonometric functions and vector rotations, featuring 
+                a pipelined architecture for high throughput in digital signal processing applications.
+            </p>
+        </div>
+
+        <div class="specs-grid">
+            <div class="spec-card"><div class="spec-label">Algorithm</div><div class="spec-value">2D CORDIC</div></div>
+            <div class="spec-card"><div class="spec-label">Modes</div><div class="spec-value">Vector &<br>Rotation</div></div>
+            <div class="spec-card"><div class="spec-label">HDL</div><div class="spec-value">Verilog</div></div>
+            <div class="spec-card"><div class="spec-label">Architecture</div><div class="spec-value">Pipelined</div></div>
+        </div>
+
+        <h2>Project Overview</h2>
+        <p>
+            The CORDIC (COordinate Rotation DIgital Computer) algorithm is a hardware-efficient iterative method for 
+            computing trigonometric, hyperbolic, and other transcendental functions. This project implemented the 2D 
+            circular CORDIC in both rotation and vector modes using Verilog HDL.
+        </p>
+        <p>
+            Unlike software implementations that rely on lookup tables or polynomial approximations, CORDIC uses only 
+            shift-and-add operations, making it ideal for hardware implementation where multipliers are expensive in 
+            terms of area and power.
+        </p>
+
+        <h2>CORDIC Algorithm Fundamentals</h2>
+        
+        <h3>Rotation Mode</h3>
+        <p>Computes the rotated coordinates of a vector (x, y) by angle θ:</p>
+        <ul>
+            <li>Input: Initial vector (x₀, y₀) and target angle θ</li>
+            <li>Output: Rotated coordinates (x_final, y_final)</li>
+            <li>Applications: Sine/cosine generation, coordinate transformations</li>
+        </ul>
+
+        <h3>Vector Mode</h3>
+        <p>Computes the magnitude and angle of a vector:</p>
+        <ul>
+            <li>Input: Vector components (x₀, y₀)</li>
+            <li>Output: Magnitude and arctangent (angle)</li>
+            <li>Applications: Cartesian-to-polar conversion, phase detection</li>
+        </ul>
+
+        <h3>Core Iteration Equations</h3>
+        <p>Each CORDIC iteration performs micro-rotations using only shifts and adds:</p>
+        <div class="code-block">
+x[i+1] = x[i] - d[i] × y[i] × 2^(-i)
+y[i+1] = y[i] + d[i] × x[i] × 2^(-i)
+z[i+1] = z[i] - d[i] × arctan(2^(-i))
+        </div>
+        <p>Where d[i] is the direction of rotation (+1 or -1) determined by the mode and sign of z[i] or y[i].</p>
+
+        <h2>Implementation Architecture</h2>
+        
+        <h3>Iterative vs. Pipelined Design</h3>
+        <p>Two primary architectural approaches were considered:</p>
+        <ul>
+            <li><strong>Iterative (Serial):</strong> Reuses single hardware stage for all iterations
+                <ul>
+                    <li>Pros: Minimal area, lower power</li>
+                    <li>Cons: Lower throughput (N clock cycles per result)</li>
+                </ul>
+            </li>
+            <li><strong>Pipelined (Parallel):</strong> Dedicated hardware for each iteration stage
+                <ul>
+                    <li>Pros: High throughput (1 result per clock cycle)</li>
+                    <li>Cons: Higher area and power consumption</li>
+                </ul>
+            </li>
+        </ul>
+        <p>
+            This implementation used a pipelined architecture for maximum throughput, suitable for high-speed DSP 
+            applications where area is less constrained than performance.
+        </p>
+
+        <h3>Pipeline Stages</h3>
+        <p>The design consisted of N pipeline stages (typically 12-16 iterations for good accuracy):</p>
+        <ul>
+            <li>Each stage implements one CORDIC micro-rotation</li>
+            <li>Barrel shifters for 2^(-i) multiplication (just wire routing!)</li>
+            <li>Adder/subtractor units for coordinate updates</li>
+            <li>Angle accumulator for tracking remaining rotation</li>
+            <li>Pipeline registers between stages for timing closure</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h3>Hardware Efficiency: Shift-Add Operations</h3>
+            <p>
+                The beauty of CORDIC is that multiplication by 2^(-i) is just a right-shift operation in hardware—
+                literally free as it's just wire connections! This eliminates the need for expensive multiplier units, 
+                making CORDIC extremely area and power efficient compared to conventional trigonometric implementations.
+            </p>
+        </div>
+
+        <h2>Verilog Implementation Details</h2>
+        
+        <h3>Module Hierarchy</h3>
+        <ul>
+            <li><strong>cordic_top:</strong> Top-level module with mode selection and I/O</li>
+            <li><strong>cordic_stage:</strong> Single pipeline stage (instantiated N times)</li>
+            <li><strong>angle_lut:</strong> ROM for arctan(2^(-i)) constants</li>
+            <li><strong>scaling_unit:</strong> Optional post-processing for gain compensation</li>
+        </ul>
+
+        <h3>Key Design Considerations</h3>
+        
+        <h3>1. Fixed-Point Representation</h3>
+        <ul>
+            <li>Used Q1.15 or Q2.14 format for fractional arithmetic</li>
+            <li>Carefully managed bit growth across pipeline stages</li>
+            <li>Ensured sufficient precision while minimizing word width</li>
+        </ul>
+
+        <h3>2. Angle Representation</h3>
+        <ul>
+            <li>Stored angles in radians using fixed-point notation</li>
+            <li>ROM-based lookup table for arctan(2^(-i)) values</li>
+            <li>Pre-computed constants for all iteration stages</li>
+        </ul>
+
+        <h3>3. Gain Compensation</h3>
+        <p>
+            CORDIC introduces a scaling factor K ≈ 1.647 that must be compensated:
+        </p>
+        <ul>
+            <li>Option 1: Pre-scale inputs by 1/K (simpler)</li>
+            <li>Option 2: Post-scale outputs by 1/K (implemented)</li>
+            <li>Used fixed-point multiplication with pre-computed 1/K constant</li>
+        </ul>
+
+        <h2>Verification and Testing</h2>
+        
+        <h3>Testbench Strategy</h3>
+        <p>Comprehensive verification included:</p>
+        <ul>
+            <li><strong>Directed Tests:</strong> Known angle/vector combinations with expected results</li>
+            <li><strong>Random Testing:</strong> Monte Carlo simulation with thousands of random inputs</li>
+            <li><strong>Boundary Cases:</strong> Test angles near 0°, 90°, 180°, etc.</li>
+            <li><strong>Mode Verification:</strong> Separate test suites for rotation and vector modes</li>
+        </ul>
+
+        <h3>Accuracy Analysis</h3>
+        <ul>
+            <li>Compared hardware results against MATLAB/Python reference models</li>
+            <li>Measured maximum absolute error across input range</li>
+            <li>Characterized error vs. number of iterations</li>
+            <li>Verified that error decreased with additional pipeline stages</li>
+        </ul>
+
+        <h2>Performance Results</h2>
+        <ul>
+            <li><strong>Accuracy:</strong> Achieved 14-16 bit precision with 16 iterations</li>
+            <li><strong>Latency:</strong> N clock cycles (equal to number of stages) for initial result</li>
+            <li><strong>Throughput:</strong> 1 result per clock cycle (after pipeline fill)</li>
+            <li><strong>Area:</strong> Significantly smaller than lookup table or multiplier-based approaches</li>
+            <li><strong>Clock Frequency:</strong> Achieved >100 MHz in typical FPGA implementations</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h3>Applications in Digital Signal Processing</h3>
+            <p>
+                CORDIC is widely used in DSP applications including: FFT/DFT computation, digital filters, 
+                modulation/demodulation (QAM, QPSK), radar signal processing, motor control (Clarke/Park transforms), 
+                and graphics rendering (3D rotations). This project's pipelined implementation is suitable for 
+                high-throughput communication systems where trigonometric operations are frequent.
+            </p>
+        </div>
+
+        <h2>Technical Skills Demonstrated</h2>
+        <ul>
+            <li>Digital design using Verilog HDL</li>
+            <li>Fixed-point arithmetic and numerical precision analysis</li>
+            <li>Pipelined architecture design for high-throughput systems</li>
+            <li>Algorithm implementation in hardware</li>
+            <li>Testbench development and verification methodology</li>
+            <li>Understanding of shift-add algorithms and CORDIC theory</li>
+            <li>Synthesis and timing analysis concepts</li>
+            <li>Trade-offs between area, power, and performance</li>
+        </ul>
+
+        <h2>Extensions and Future Work</h2>
+        <p>Potential enhancements to explore:</p>
+        <ul>
+            <li><strong>Hyperbolic CORDIC:</strong> Extend to compute sinh, cosh, tanh functions</li>
+            <li><strong>Configurable Precision:</strong> Runtime selection of iteration count for accuracy/speed trade-off</li>
+            <li><strong>Parallel CORDIC Engines:</strong> Multiple instances for MIMO or parallel processing</li>
+            <li><strong>FPGA Implementation:</strong> Synthesize and measure actual hardware performance</li>
+            <li><strong>Power Optimization:</strong> Clock gating and operand isolation for lower power</li>
+            <li><strong>Application Integration:</strong> Use CORDIC in complete FFT or digital filter design</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+            This project successfully demonstrated hardware implementation of the CORDIC algorithm, showcasing 
+            the elegance of shift-add computation for trigonometric functions. The pipelined architecture achieved 
+            high throughput while maintaining excellent accuracy, making it suitable for real-time DSP applications.
+        </p>
+        <p>
+            The project reinforced understanding of fixed-point arithmetic, pipeline design, and the critical 
+            importance of algorithm selection in hardware implementation—CORDIC's simplicity makes it far superior 
+            to conventional approaches for resource-constrained digital systems.
+        </p>
+    </div>
+</body>
+</html>
